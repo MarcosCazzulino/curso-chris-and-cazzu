@@ -14,12 +14,5 @@ entregas/
 
 El evaluador automático (`evaluar-pr`) bloqueará cualquier Pull Request que modifique archivos fuera de tu carpeta.
 
-## Enlazar tu MVP desplegado en el Campus
-Cuando tengas tu proyecto publicado en Vercel, agregá un archivo `entregas/<tu-usuario-github>/mvp/proyecto.json` con este formato para que aparezca automáticamente en la galería del Campus:
-
-```json
-{
-  "nombre": "Nombre de tu sistema",
-  "url": "https://tu-proyecto.vercel.app"
-}
-```
+## Registro de tu MVP desplegado (Semana 11)
+Cuando emancipes tu proyecto a su repositorio independiente y lo publiques en Vercel + Render, compartí el título, la URL pública y el link de tu repositorio para registrarlos en la galería privada del Campus (Supabase).

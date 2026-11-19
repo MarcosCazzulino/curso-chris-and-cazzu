@@ -27,8 +27,8 @@ Este curso no entrega un título ni certificado formal: el objetivo real es que 
 
 ## 3. Cómo Funcionan las Clases y las Entregas
 
-### Antes de la Clase 1 (Pre-trabajo obligatorio)
-Para aprovechar el tiempo de clase programando y no instalando programas, debés llegar a la primera clase con **VS Code, Node.js (LTS), Git, las extensiones recomendadas, tu cuenta de GitHub y el Fork del repositorio del curso** ya hechos. En los últimos 20 minutos de la Clase 1 vamos a hacer juntos tu primer Pull Request de prueba en vivo para confirmar que todo funciona.
+### Clase 0 — Entrada en Calor (Pre-trabajo obligatorio antes de la Clase 1)
+Para aprovechar el tiempo de clase programando y no instalando programas, debés llegar a la Clase 1 con **VS Code, Node.js (LTS), Git, las extensiones recomendadas, tu cuenta de GitHub, el Fork del repositorio del curso** y tu **primer Pull Request abierto** (la tarjeta de presentación en HTML + CSS de `clases/clase-00/consigna.md`). Al inicio de la Clase 1 revisamos y mergeamos ese PR en vivo para confirmar que el flujo completo funciona.
 
 ### Flujo de Entregas Semanales (Fork + Pull Request)
 1. Durante la cursada (Semanas 1 a 11), cada alumno tiene su propia carpeta aislada dentro del repositorio del curso: `entregas/<tu-usuario-github>/`.
@@ -43,15 +43,18 @@ Si te trabás de lunes a jueves, primero buscá en los recursos de la semana y *
 
 ## 4. Contenidos del Programa (3 Fases — 12 Semanas)
 
+### Clase 0: Entrada en Calor (Antes de la Semana 1)
+- **Clase 0:** Instalación del entorno (VS Code, Node.js LTS, Git, GitHub), Fork del repositorio, primera tarjeta web con HTML + CSS y apertura de tu **primer Pull Request**.
+
 ### Fase 1: Lógica Pura en TypeScript y Web Básica (Semanas 1 a 4)
-- **Semana 1:** Verificación de entorno, flujo básico de Git/PRs (PR de prueba en vivo), TypeScript vs. JavaScript, variables, tipos primitivos (`string`, `number`, `boolean`), condicionales (`if/else`) y bucles (`for`, `while`).
+- **Semana 1:** Revisión y merge del PR de Clase 0, `Sync fork`, TypeScript vs. JavaScript, variables, tipos primitivos (`string`, `number`, `boolean`), condicionales (`if/else`) y bucles (`for`, `while`).
 - **Semana 2:** Funciones tipadas, `interface` y *union types* modernos (sin `enum`), arrays y objetos, lectura de archivos `JSON` reales (`fs.readFileSync` + `JSON.parse`) y métodos fundamentales (`.map()`, `.filter()`, `.find()`, `.forEach()`).
 - **Semana 3:** Arquitectura Web (Cliente vs. Servidor), protocolo HTTP (verbos, headers, códigos `200`, `400`, `401`, `404`, `500`), APIs REST, asincronía (`async/await`, `try/catch`, `fetch` primero en Node y luego en un esqueleto web) e inspección en DevTools.
 - **Semana 4 — Examen Eliminatorio 1:** Lógica pura en TypeScript + consumo de API pública. **Al finalizar el examen, quienes aprueban presentan su idea de MVP en 5 líneas para validar el alcance antes de arrancar React.**
 
 ### Fase 2: React, Bases de Datos SQL y Persistencia (Semanas 5 a 8)
 - **Semana 5:** Salto a React con Vite (`react-ts`), TypeScript y Tailwind CSS (kit mínimo de clases). Componentes, `props` tipadas, estado (`useState`), inmutabilidad y formularios controlados. Inicio del Proyecto Integrador (CRUD completo en memoria).
-- **Semana 6:** Bases de datos relacionales vs. NoSQL. Modelado de tablas, `Primary Key (PK)`, `Foreign Key (FK)` y relaciones `1:N`. Escritura de SQL puro en Supabase (`CREATE TABLE`, `INSERT`, `SELECT`, `UPDATE`, `DELETE`, `JOIN`).
+- **Semana 6:** **Arquitectura de bases de datos relacionales** vs. NoSQL. Modelado de entidades, relaciones `1:N` y `N:M`, normalización básica, `Primary Key (PK)`, `Foreign Key (FK)`, restricciones (`NOT NULL`, `UNIQUE`, `CHECK`) e índices. Escritura de SQL puro en Supabase (`CREATE TABLE`, `INSERT`, `SELECT`, `UPDATE`, `DELETE`, `JOIN`).
 - **Semana 7:** Conexión del frontend en React con Supabase usando **Custom Hooks** y **TanStack Query** (`useQuery`, `useMutation`), manejo de variables de entorno (`.env`) y `.gitignore`.
 - **Semana 8 — Examen Eliminatorio 2:** Modelado en SQL + CRUD persistente en React, TanStack Query y Supabase.
 
