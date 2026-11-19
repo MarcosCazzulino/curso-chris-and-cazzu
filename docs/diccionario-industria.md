@@ -15,6 +15,7 @@ Conceptos que debés poder explicar con tus propias palabras en los exámenes or
 - **JSON:** Formato de texto estándar para intercambiar datos estructurados entre sistemas.
 - **CRUD:** Las 4 operaciones básicas sobre datos: *Create, Read, Update, Delete*.
 - **SQL vs. NoSQL:** Bases de datos relacionales (tablas con esquemas, `PK`, `FK`, `JOIN`, como PostgreSQL) vs. no relacionales (documentos, clave-valor).
+- **Arquitectura y Modelado Relacional (DER / Normalización):** Diseño previo de entidades, cardinalidad (`1:N`, `N:M` con tabla intermedia), normalización básica para evitar datos duplicados, restricciones (`NOT NULL`, `UNIQUE`, `CHECK`) e índices.
 - **Custom Hooks:** Funciones `use...` en React para encapsular y reutilizar lógica de estado o consumo de datos.
 - **Server State vs. Client Global State:** Datos remotos cacheados y sincronizados con el servidor (**TanStack Query**) vs. estado global local del navegador (**Zustand**; alternativa histórica: **Redux**).
 
