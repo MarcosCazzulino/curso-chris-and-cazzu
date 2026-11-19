@@ -1,0 +1,88 @@
+name: Evaluar PR (Solo Código Modificado)
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened]
+
+permissions:
+  contents: read
+  pull-requests: read
+
+jobs:
+  evaluar-pr:
+    name: evaluar-pr
+    runs-on: ubuntu-latest
+    steps:
+      - name: Validar rutas y generar resumen del diff
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const pr = context.payload.pull_request;
+            const author = pr.user.login.toLowerCase();
+            const repoOwner = context.repo.owner.toLowerCase();
+            const allowedPrefix = `entregas/${author}/`;
+
+            const files = await github.paginate(github.rest.pulls.listFiles, {
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              pull_number: pr.number,
+              per_page: 100
+            });
+
+            const forbidden = [];
+            const ignoredForDiff = ['package-lock.json', 'pnpm-lock.yaml', 'yarn.lock'];
+            let totalAdd = 0;
+            let totalDel = 0;
+
+            for (const f of files) {
+              totalAdd += f.additions;
+              totalDel += f.deletions;
+              const lowerPath = f.filename.toLowerCase();
+              if (author !== repoOwner && !lowerPath.startsWith(allowedPrefix)) {
+                forbidden.push(f.filename);
+              }
+            }
+
+            const lines = [];
+            lines.push(`# Resumen del Pull Request #${pr.number}`);
+            lines.push(`- **Autor:** \`@${pr.user.login}\``);
+            lines.push(`- **Carpeta permitida:** \`${allowedPrefix}\``);
+            lines.push(`- **Archivos modificados:** ${files.length} (\`+${totalAdd}\` / \`-${totalDel}\`)`);
+            lines.push('');
+
+            if (forbidden.length > 0) {
+              lines.push('## ❌ Guardián de Rutas: BLOQUEADO');
+              lines.push(`Se modificaron archivos fuera de \`${allowedPrefix}\`:`);
+              for (const p of forbidden) lines.push(`- \`${p}\``);
+              lines.push('');
+            } else {
+              lines.push('## ✅ Guardián de Rutas: OK');
+              lines.push('Todos los archivos están dentro de la carpeta permitida.');
+              lines.push('');
+            }
+
+            lines.push('## Archivos modificados');
+            lines.push('| Archivo | Estado | Líneas |');
+            lines.push('| :--- | :--- | :--- |');
+            for (const f of files) {
+              lines.push(`| \`${f.filename}\` | ${f.status} | \`+${f.additions}\` / \`-${f.deletions}\` |`);
+            }
+            lines.push('');
+
+            lines.push('## Diff de código modificado');
+            for (const f of files) {
+              const base = f.filename.split('/').pop();
+              if (ignoredForDiff.includes(base) || !f.patch) continue;
+              lines.push(`<details><summary><code>${f.filename}</code> (+${f.additions} / -${f.deletions})</summary>`);
+              lines.push('');
+              lines.push('```diff');
+              lines.push(f.patch.slice(0, 6000));
+              lines.push('```');
+              lines.push('</details>');
+            }
+
+            await core.summary.addRaw(lines.join('\n')).write();
+
+            if (forbidden.length > 0) {
+              core.setFailed(`PR bloqueado: archivos fuera de ${allowedPrefix}: ${forbidden.join(', ')}`);
+            }

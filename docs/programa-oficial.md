@@ -1,0 +1,111 @@
+# Programa Oficial — Bootcamp de Programación Web desde Cero (v2)
+
+**Duración estimada:** 12 semanas  
+**Grupo:** Cohorte reducida (1 a 3 personas)  
+**Modalidad:** Encuentros en vivo los fines de semana (2 a 4 hs semanales, viernes y/o sábado) + práctica autónoma obligatoria durante la semana (6 a 8 hs).  
+**Nivel inicial requerido:** Ninguno (desde cero absoluto).
+
+---
+
+## 1. Objetivo del Curso
+
+Que al finalizar las 12 semanas seas capaz de **pensar, programar, conectar a una base de datos y desplegar en internet un proyecto web propio**, entendiendo qué ocurre por debajo en cada capa y manejando el vocabulario técnico real de la industria.
+
+Este curso no entrega un título ni certificado formal: el objetivo real es que termines con bases sólidas, criterio técnico y **un producto web propio, publicado en tu cuenta de GitHub, listo para mostrar en tu portfolio o vender a un cliente real**.
+
+---
+
+## 2. Stack Tecnológico que Vas a Aprender
+
+- **Lenguaje:** TypeScript moderno (ejecutado nativamente en Node.js LTS, estándar actual de la industria).
+- **Frontend:** React + Vite + Tailwind CSS + **Custom Hooks**, **TanStack Query** (estado del servidor) y **Zustand** (estado global de cliente).
+- **Base de Datos y Autenticación:** Supabase (PostgreSQL con SQL escrito a mano + roles + políticas de seguridad RLS).
+- **Backend Propio:** Node.js + Express en TypeScript (con validación de JWT y roles).
+- **Flujo de Trabajo y Producción:** Git, GitHub (flujo profesional de Fork + Pull Requests), Vercel y Render.
+
+---
+
+## 3. Cómo Funcionan las Clases y las Entregas
+
+### Antes de la Clase 1 (Pre-trabajo obligatorio)
+Para aprovechar el tiempo de clase programando y no instalando programas, debés llegar a la primera clase con **VS Code, Node.js (LTS), Git, las extensiones recomendadas, tu cuenta de GitHub y el Fork del repositorio del curso** ya hechos. En los últimos 20 minutos de la Clase 1 vamos a hacer juntos tu primer Pull Request de prueba en vivo para confirmar que todo funciona.
+
+### Flujo de Entregas Semanales (Fork + Pull Request)
+1. Durante la cursada (Semanas 1 a 11), cada alumno tiene su propia carpeta aislada dentro del repositorio del curso: `entregas/<tu-usuario-github>/`.
+2. Cada semana trabajás en tu Fork, subís tus cambios antes del **jueves a las 23:59** y abrís un **Pull Request** contra el repositorio del curso (no se permite pushear directo ni mergear sin revisión).
+3. Un evaluador automático (**GitHub Action**) verifica que solo hayas modificado tu carpeta y genera un resumen limpio de tu código modificado.
+4. En la clase del fin de semana defendés tu código oralmente. Una vez aprobado, **el instructor mergea tu PR a `main`** y antes de la semana siguiente hacés **Sync fork + `git pull`** para que tu próximo PR muestre únicamente lo nuevo.
+
+### Regla de Dudas Entre Semana ("Primero al Grupo")
+Si te trabás de lunes a jueves, primero buscá en los recursos de la semana y **compartí la duda en el grupo** para destrabarse entre compañeros. Si nadie logra resolverlo, recién ahí arrobás al instructor enviando: (1) qué intentaste, (2) el código relevante y (3) el error exacto.
+
+---
+
+## 4. Contenidos del Programa (3 Fases — 12 Semanas)
+
+### Fase 1: Lógica Pura en TypeScript y Web Básica (Semanas 1 a 4)
+- **Semana 1:** Verificación de entorno, flujo básico de Git/PRs (PR de prueba en vivo), TypeScript vs. JavaScript, variables, tipos primitivos (`string`, `number`, `boolean`), condicionales (`if/else`) y bucles (`for`, `while`).
+- **Semana 2:** Funciones tipadas, `interface` y *union types* modernos (sin `enum`), arrays y objetos, lectura de archivos `JSON` reales (`fs.readFileSync` + `JSON.parse`) y métodos fundamentales (`.map()`, `.filter()`, `.find()`, `.forEach()`).
+- **Semana 3:** Arquitectura Web (Cliente vs. Servidor), protocolo HTTP (verbos, headers, códigos `200`, `400`, `401`, `404`, `500`), APIs REST, asincronía (`async/await`, `try/catch`, `fetch` primero en Node y luego en un esqueleto web) e inspección en DevTools.
+- **Semana 4 — Examen Eliminatorio 1:** Lógica pura en TypeScript + consumo de API pública. **Al finalizar el examen, quienes aprueban presentan su idea de MVP en 5 líneas para validar el alcance antes de arrancar React.**
+
+### Fase 2: React, Bases de Datos SQL y Persistencia (Semanas 5 a 8)
+- **Semana 5:** Salto a React con Vite (`react-ts`), TypeScript y Tailwind CSS (kit mínimo de clases). Componentes, `props` tipadas, estado (`useState`), inmutabilidad y formularios controlados. Inicio del Proyecto Integrador (CRUD completo en memoria).
+- **Semana 6:** Bases de datos relacionales vs. NoSQL. Modelado de tablas, `Primary Key (PK)`, `Foreign Key (FK)` y relaciones `1:N`. Escritura de SQL puro en Supabase (`CREATE TABLE`, `INSERT`, `SELECT`, `UPDATE`, `DELETE`, `JOIN`).
+- **Semana 7:** Conexión del frontend en React con Supabase usando **Custom Hooks** y **TanStack Query** (`useQuery`, `useMutation`), manejo de variables de entorno (`.env`) y `.gitignore`.
+- **Semana 8 — Examen Eliminatorio 2:** Modelado en SQL + CRUD persistente en React, TanStack Query y Supabase.
+
+### Fase 3: Seguridad, Roles, Backend Propio y Emancipación del MVP (Semanas 9 a 12)
+- **Semana 9:** Autenticación (Login / JWT) vs. Autorización (**roles `admin` y `usuario`**). Implementación de Supabase Auth, políticas *Row Level Security (RLS)* en SQL, vistas separadas (Panel Admin vs. Vista Usuario) y estado global con **Zustand**.
+- **Semana 10:** Backend propio en Node.js + Express (TypeScript). Creación de endpoints propios, middlewares, CORS y validación obligatoria de sesión JWT y roles (`Authorization: Bearer <token>`) del lado del servidor.
+- **Semana 11:** Recorte de alcance de **MVP (*Minimum Viable Product*)**, **Emancipación del MVP** (extraés tu carpeta `mvp/` a **tu propio repositorio independiente** en GitHub), **Deploy** en producción (Vercel + Render) y **Dominios y DNS** (cómo registrar un dominio `.com.ar` en NIC Argentina o `.com`, configurar registros `A`/`CNAME` en Vercel y habilitar HTTPS/SSL para entregar un sistema vendible con dirección propia).
+- **Semana 12 — Examen Final (Defensa del MVP):** Presentación del proyecto publicado en internet, auditoría de código y modificación en vivo.
+
+---
+
+## 5. Diccionario Obligatorio de la Industria
+
+Además de escribir código, vas a poder explicar con tus propias palabras:
+- **Web y Red:** Frontend, Backend, Base de Datos, HTTP (Request/Response, Status Codes), API, API REST, CORS, `fetch` (y Axios como alternativa), **Dominio, DNS (`A` / `CNAME`) y HTTPS/SSL**.
+- **Datos y React Moderno:** TypeScript vs. JavaScript, JSON, CRUD, SQL vs. NoSQL, PK/FK, Join, Custom Hooks, *Server State* (TanStack Query) vs. *Client Global State* (Zustand / Redux).
+- **Seguridad:** Autenticación vs. Autorización, Roles, JWT / Bearer Token, RLS, variables de entorno (`.env`).
+- **Producto:** MVP, Deploy, Localhost vs. Producción, Git/GitHub, Fork y Pull Request.
+
+---
+
+## 6. Proyecto Integrador (MVP Real y Vendible)
+
+En la **Semana 4** proponés un problema real de un comercio o servicio local (o elegís una de las ideas recomendadas) y el instructor aprueba el alcance. El objetivo es que el sistema quede **completo, usable y vendible**, cumpliendo:
+1. Mínimo **2–3 tablas relacionadas (`1:N`)** creadas en SQL a mano (`schema.sql`), incluyendo tabla de perfiles/roles.
+2. **CRUD completo** en React + TypeScript + Tailwind + **Custom Hooks + TanStack Query + Zustand**.
+3. **Panel de Administrador y Vista de Usuario/Cliente** con Login/Registro, gestión de **roles** y políticas **RLS** reales en PostgreSQL.
+4. Al menos **1 o 2 endpoints propios en Node.js + Express** con validación de JWT y roles para reglas críticas de negocio o cierres/reportes.
+5. **Repositorio propio e independiente** (emancipado en Semana 11) y **desplegado en internet** con URL pública funcionando en celular y PC.
+
+**Ideas recomendadas (vendibles a comercios/servicios locales):**
+- **Sistema de Turnos y Reservas (Peluquería, Barbería, Estética o Cancha de Fútbol 5 / Pádel):** vista cliente para reservar horarios libres + panel admin para gestionar servicios, horarios y caja del día + validación antisolapamiento en Express.
+- **Gestión de Gimnasio (Socios, Cuotas y Vencimientos):** vista socio para ver vencimiento de cuota y rutina + panel admin para cobrar cuotas mensuales, ver morosos y caja del mes + cálculo de vencimientos en Express.
+- **Stock, Ventas y Cuentas Corrientes / Fiados (Despensa, Kiosco, Ferretería):** roles dueño/empleado, control de stock con alertas, libreta digital de cuentas corrientes/fiados y procesamiento de ventas + cierre de caja en Express.
+- **Pedidos Online para Rotisería / Pizzería / Comida Casera:** menú público con carrito (Zustand) y seguimiento de estado + panel de cocina/dueño para pausar platos y avanzar pedidos + validación de totales en Express.
+
+---
+
+## 7. Sistema de Evaluación y Política de IA
+
+- **Escala:** 1 al 10. **Nota mínima para aprobar cada examen:** **7**.
+- **Formato de exámenes (Semanas 4, 8 y 12 — bloque de 2 horas):**
+  - **40 % Live Coding en simultáneo (40 min):** Todos reciben la consigna al mismo tiempo y suben su PR al terminar. Se puede consultar documentación oficial y Google; **sin uso de IA**.
+  - **30 % Oral / Conceptual individual (15 min c/u):** Preguntas directas sin apuntes para validar comprensión real.
+  - **30 % Entregable:** Avance del proyecto subido por PR en tiempo y forma, funcionando.
+- **Política de IA durante la semana:** Podés usar herramientas de IA (ChatGPT, Claude, etc.) para destrabarte, entender errores o estudiar, **siempre declarando con honestidad en la plantilla del PR en qué te ayudó**. Sin embargo, que el código funcione no alcanza: si en la revisión no sabés explicar puntualmente qué hace una función, por qué funciona y el concepto detrás, el entregable vale **0**.
+
+---
+
+## Anexo Opcional — Acuerdo de Compromiso
+
+> *Este curso es un espacio gratuito y armado a medida para que aprendas a programar en serio y termines con un proyecto propio desplegado y vendible. Para que valga el tiempo de todos, acordamos estas reglas simples:*
+>
+> 1. **Constancia y entregas:** Las clases del fin de semana son cortas (2 a 4 hs) porque el aprendizaje real pasa en la práctica de la semana (6 a 8 hs). Llegar **dos semanas seguidas sin la entrega hecha** o faltar sin avisar con **24 hs de anticipación** da por terminada la cursada.
+> 2. **Consultas entre semana:** Primero al grupo para ayudarse entre compañeros; al instructor solo con error exacto, código y qué probaron.
+> 3. **Honestidad con la IA:** Usala para aprender y declaralo en el PR; nunca entregues código que no puedas explicar.
+> 4. **Exámenes eliminatorios:** Si en uno de los 3 exámenes sacás menos de 7, tenés **un único recuperatorio privado 1-a-1 a los 3 días** sobre la parte desaprobada. Si volvés a desaprobar, se cierra la cursada ahí, sin rencores — la amistad sigue igual.
