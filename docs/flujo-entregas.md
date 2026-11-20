@@ -8,8 +8,8 @@ Durante el curso nunca subís código directo a `main`. Trabajás en tu **Fork**
 1. Entrá al repositorio del curso en GitHub y hacé clic en **Fork** (arriba a la derecha).
 2. Cloná **tu fork** en tu computadora:
 ```bash
-git clone https://github.com/<TU-USUARIO>/bootcamp-web-ts.git
-cd bootcamp-web-ts
+git clone https://github.com/<TU-USUARIO>/curso-repo.git
+cd curso-repo
 ```
 
 ---

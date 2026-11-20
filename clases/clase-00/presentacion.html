@@ -109,8 +109,17 @@
         box-sizing: border-box;
         margin: 0;
         padding: 0;
-        scrollbar-width: thin;
-        scrollbar-color: var(--border-strong) transparent;
+      }
+
+      @supports not selector(::-webkit-scrollbar) {
+        * {
+          scrollbar-width: thin;
+          scrollbar-color: var(--border-strong) transparent;
+        }
+        .code-editor,
+        pre.code-block {
+          scrollbar-color: #2f3646 transparent;
+        }
       }
 
       ::-webkit-scrollbar {
@@ -131,13 +140,14 @@
         background-color: var(--subtle);
       }
 
-      ::-webkit-scrollbar-corner {
-        background: transparent;
+      ::-webkit-scrollbar-button {
+        display: none;
+        width: 0;
+        height: 0;
       }
 
-      .code-editor,
-      pre.code-block {
-        scrollbar-color: #2f3646 transparent;
+      ::-webkit-scrollbar-corner {
+        background: transparent;
       }
 
       .code-editor::-webkit-scrollbar-thumb,
@@ -1831,8 +1841,22 @@
       const htmlFocusHint = document.getElementById('htmlFocusHint');
       let htmlWithCss = false;
 
+      const PREVIEW_SCROLLBAR_CSS = `
+        @supports not selector(::-webkit-scrollbar) {
+          * { scrollbar-width: thin; scrollbar-color: #d4d4d4 transparent; }
+        }
+        ::-webkit-scrollbar { width: 6px; height: 6px; }
+        ::-webkit-scrollbar-track { background: transparent; }
+        ::-webkit-scrollbar-thumb { background: #d4d4d4; border-radius: 999px; }
+        ::-webkit-scrollbar-thumb:hover { background: #a3a3a3; }
+        ::-webkit-scrollbar-button { display: none; width: 0; height: 0; }
+        ::-webkit-scrollbar-corner { background: transparent; }
+      `;
+
       function updateHtmlPreview() {
-        const css = htmlWithCss ? `<style>${HTML_BASE_CSS}</style>` : '<style>body{padding:16px;margin:0;}</style>';
+        const css = htmlWithCss
+          ? `<style>${PREVIEW_SCROLLBAR_CSS}${HTML_BASE_CSS}</style>`
+          : `<style>${PREVIEW_SCROLLBAR_CSS}body{padding:16px;margin:0;}</style>`;
         htmlPreview.srcdoc = `<!doctype html><html lang="es"><head><meta charset="UTF-8"/>${css}</head><body>${htmlEditor.value}</body></html>`;
       }
 
@@ -1996,7 +2020,7 @@ p {
       let activePreset = 'clean';
 
       function updateCssPreview() {
-        cssPreview.srcdoc = `<!doctype html><html lang="es"><head><meta charset="UTF-8"/><style>${cssEditor.value}</style></head><body>${DEFAULT_HTML}</body></html>`;
+        cssPreview.srcdoc = `<!doctype html><html lang="es"><head><meta charset="UTF-8"/><style>${PREVIEW_SCROLLBAR_CSS}${cssEditor.value}</style></head><body>${DEFAULT_HTML}</body></html>`;
       }
 
       cssEditor.value = CSS_PRESETS.clean;
