@@ -109,6 +109,45 @@
         box-sizing: border-box;
         margin: 0;
         padding: 0;
+        scrollbar-width: thin;
+        scrollbar-color: var(--border-strong) transparent;
+      }
+
+      ::-webkit-scrollbar {
+        width: 6px;
+        height: 6px;
+      }
+
+      ::-webkit-scrollbar-track {
+        background: transparent;
+      }
+
+      ::-webkit-scrollbar-thumb {
+        background-color: var(--border-strong);
+        border-radius: 999px;
+      }
+
+      ::-webkit-scrollbar-thumb:hover {
+        background-color: var(--subtle);
+      }
+
+      ::-webkit-scrollbar-corner {
+        background: transparent;
+      }
+
+      .code-editor,
+      pre.code-block {
+        scrollbar-color: #2f3646 transparent;
+      }
+
+      .code-editor::-webkit-scrollbar-thumb,
+      pre.code-block::-webkit-scrollbar-thumb {
+        background-color: #2f3646;
+      }
+
+      .code-editor::-webkit-scrollbar-thumb:hover,
+      pre.code-block::-webkit-scrollbar-thumb:hover {
+        background-color: #4b5563;
       }
 
       html,
@@ -320,16 +359,6 @@
       }
 
       /* Hero slide */
-      .hero-box {
-        position: relative;
-        padding: 36px 34px;
-        border-radius: 16px;
-        border: 1px solid var(--border);
-        background:
-          radial-gradient(600px circle at 90% 10%, rgba(37, 99, 235, 0.08), transparent 60%),
-          var(--surface);
-      }
-
       .hero-tags {
         display: flex;
         flex-wrap: wrap;
@@ -1096,19 +1125,17 @@
     <main id="stage">
       <!-- SLIDE 1: PORTADA -->
       <section class="slide active" data-title="Bienvenida">
-        <div class="hero-box">
-          <p class="eyebrow">WTDev · Bootcamp de Programación Web desde Cero</p>
-          <h1>De cero a tu primer sistema web publicado en 12 semanas.</h1>
-          <p class="lead">
-            En la <strong>Clase 0</strong> dejamos listo tu entorno, probamos <strong>HTML y CSS en vivo</strong> y
-            aprendemos a entregar tu primer <strong>Pull Request</strong> antes de arrancar con TypeScript.
-          </p>
-          <div class="hero-tags">
-            <span class="tag html">HTML Semántico</span>
-            <span class="tag css">CSS + Box Model</span>
-            <span class="tag ok">Git + Pull Request</span>
-            <span class="tag">0 experiencia previa requerida</span>
-          </div>
+        <p class="eyebrow">WTDev · Bootcamp de Programación Web desde Cero</p>
+        <h1>De cero a tu primer sistema web publicado en 12 semanas.</h1>
+        <p class="lead">
+          En la <strong>Clase 0</strong> dejamos listo tu entorno, probamos <strong>HTML y CSS en vivo</strong> y
+          aprendemos a entregar tu primer <strong>Pull Request</strong> antes de arrancar con TypeScript.
+        </p>
+        <div class="hero-tags">
+          <span class="tag html">HTML Semántico</span>
+          <span class="tag css">CSS + Box Model</span>
+          <span class="tag ok">Git + Pull Request</span>
+          <span class="tag">0 experiencia previa requerida</span>
         </div>
       </section>
 
