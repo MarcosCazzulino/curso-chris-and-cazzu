@@ -97,7 +97,7 @@ En la **Semana 4** proponés un problema real de un comercio o servicio local (o
 
 - **Escala:** 1 al 10. **Nota mínima para aprobar cada examen:** **7**.
 - **Formato de exámenes (Semanas 4, 8 y 12 — bloque de 2 horas):**
-  - **40 % Live Coding en simultáneo (40 min):** Todos reciben la consigna al mismo tiempo y suben su PR al terminar. Se puede consultar documentación oficial y Google; **sin uso de IA**.
+  - **40 % Pseudocódigo Tipado en Vivo (40 min, en simultáneo):** Todos reciben un problema real al mismo tiempo y deben **plantear y resolver la lógica en pseudocódigo estructurado** (sin IA), siendo **estrictos con los tipos, interfaces, estructuras de datos, validaciones y casos borde** — el foco es pensar y diseñar la solución con criterio técnico, no memorizar sintaxis.
   - **30 % Oral / Conceptual individual (15 min c/u):** Preguntas directas sin apuntes para validar comprensión real.
   - **30 % Entregable:** Avance del proyecto subido por PR en tiempo y forma, funcionando.
 - **Política de IA durante la semana:** Podés usar herramientas de IA (ChatGPT, Claude, etc.) para destrabarte, entender errores o estudiar, **siempre declarando con honestidad en la plantilla del PR en qué te ayudó**. Sin embargo, que el código funcione no alcanza: si en la revisión no sabés explicar puntualmente qué hace una función, por qué funciona y el concepto detrás, el entregable vale **0**.

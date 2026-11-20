@@ -1,7 +1,7 @@
 # Semana 4 — Examen Eliminatorio 1 + Definición del MVP
 
 ## Formato de Evaluación (Bloque de 2 horas — Nota mínima: 7/10)
-- **40 % Live Coding en simultáneo (40 min, sin IA):** Consumir un endpoint público nuevo con `fetch` en TypeScript, definir su `interface`, filtrar resultados según la condición pedida en clase y mostrar 3 campos. Al terminar, subir el código en `entregas/<tu-usuario-github>/examen-01/` vía Pull Request.
+- **40 % Pseudocódigo Tipado en Vivo en simultáneo (40 min, sin IA):** Dado un problema y un endpoint público nuevo, plantear y escribir en pseudocódigo estructurado la solución completa siendo **estricto en los tipos e `interface` de entrada/salida, manejo de errores (`try/catch`, status HTTP), filtrado y casos borde**. Al terminar, subir el archivo en `entregas/<tu-usuario-github>/examen-01/` vía Pull Request.
 - **30 % Oral individual (15 min c/u, sin apuntes):** Flujo Cliente/Servidor/HTTP/Status Codes, TypeScript vs. JavaScript, JSON vs. objeto tipado, `.map()` vs. `.filter()`, `async/await`.
 - **30 % Entregable:** Entrega de Semana 3 funcionando y defendida línea por línea.
 
