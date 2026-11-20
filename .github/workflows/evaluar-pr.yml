@@ -30,6 +30,7 @@ jobs:
             });
 
             const forbidden = [];
+            const forbiddenJunk = [];
             const ignoredForDiff = ['package-lock.json', 'pnpm-lock.yaml', 'yarn.lock'];
             let totalAdd = 0;
             let totalDel = 0;
@@ -38,8 +39,16 @@ jobs:
               totalAdd += f.additions;
               totalDel += f.deletions;
               const lowerPath = f.filename.toLowerCase();
+              const baseName = lowerPath.split('/').pop();
               if (author !== repoOwner && !lowerPath.startsWith(allowedPrefix)) {
                 forbidden.push(f.filename);
+              }
+              if (
+                lowerPath.includes('/node_modules/') ||
+                lowerPath.startsWith('node_modules/') ||
+                ((baseName === '.env' || baseName.startsWith('.env.')) && baseName !== '.env.example')
+              ) {
+                forbiddenJunk.push(f.filename);
               }
             }
 
@@ -81,8 +90,17 @@ jobs:
               lines.push('</details>');
             }
 
+            if (forbiddenJunk.length > 0) {
+              lines.push('## ❌ Archivos prohibidos detectados (`node_modules` o `.env`)');
+              for (const p of forbiddenJunk) lines.push(`- \`${p}\``);
+              lines.push('');
+            }
+
             await core.summary.addRaw(lines.join('\n')).write();
 
-            if (forbidden.length > 0) {
-              core.setFailed(`PR bloqueado: archivos fuera de ${allowedPrefix}: ${forbidden.join(', ')}`);
+            if (forbidden.length > 0 || forbiddenJunk.length > 0) {
+              const reasons = [];
+              if (forbidden.length > 0) reasons.push(`archivos fuera de ${allowedPrefix}: ${forbidden.join(', ')}`);
+              if (forbiddenJunk.length > 0) reasons.push(`node_modules/.env prohibidos: ${forbiddenJunk.join(', ')}`);
+              core.setFailed(`PR bloqueado: ${reasons.join(' | ')}`);
             }
