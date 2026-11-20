@@ -8,6 +8,7 @@ Diseñar la **arquitectura relacional** de un sistema real (entidades, relacione
 - **Arquitectura y Modelado Relacional (DER):** entidades, tablas, filas, columnas
 - `Primary Key (PK)`, `Foreign Key (FK)` y cardinalidad (`1:N`, `N:M` con tabla intermedia)
 - **Normalización básica** (por qué no duplicar datos) y restricciones (`NOT NULL`, `UNIQUE`, `CHECK`)
+- **SQL Injection** (por qué jamás concatenar texto del usuario en SQL y cómo protegen las consultas parametrizadas)
 - Índices básicos, `CRUD` mapeado a SQL (`INSERT`, `SELECT`, `UPDATE`, `DELETE`) y `JOIN`
 
 ## Recursos Permitidos

@@ -6,6 +6,7 @@ Dar los primeros pasos en **TypeScript moderno** ejecutado nativamente con Node.
 ## Diccionario de la Industria
 - Código fuente y terminal/consola
 - TypeScript vs. JavaScript (tipado estático y transpilación)
+- **Scope** (alcance de variables) y **`null` vs. `undefined`**
 - Control de versiones (`Git` vs. `GitHub`), repositorio, rama (*branch*), commit, Fork y Pull Request
 
 ## Recursos Permitidos

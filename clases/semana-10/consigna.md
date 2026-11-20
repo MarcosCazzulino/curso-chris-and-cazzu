@@ -4,7 +4,8 @@
 Construir un servidor backend propio en **Node.js + Express con TypeScript**, configurando CORS y un middleware de autenticación que valide el `Authorization: Bearer <token>` enviado desde React antes de ejecutar lógica crítica de negocio.
 
 ## Diccionario de la Industria
-- Backend propio (cuándo y por qué hace falta: secretos, reglas críticas que el cliente no puede falsificar)
+- Backend propio (cuándo y por qué hace falta: secretos, reglas críticas — **"nunca confiar en el cliente"**)
+- Validación de límites en servidor y **Rate Limiting** (`HTTP 429`)
 - Endpoint, Routing, Middleware, CORS
 - `Authorization: Bearer <token>` y validación de JWT
 

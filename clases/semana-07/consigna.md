@@ -7,6 +7,7 @@ Conectar el frontend de tu MVP a PostgreSQL mediante Supabase usando **Custom Ho
 - Variables de entorno (`.env`) y `.gitignore`
 - SDK / Cliente de base de datos (`@supabase/supabase-js`)
 - *Server State* vs. *Client State*
+- **Los 4 estados de toda UI:** *Loading (skeleton/spinner), Empty, Error y Data*
 - Custom Hooks (`use...`), caché e invalidación (`TanStack Query`)
 
 ## Recursos Permitidos

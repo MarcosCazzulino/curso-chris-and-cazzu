@@ -4,6 +4,8 @@
 Comprender cómo se comunican Cliente y Servidor mediante HTTP, consumir APIs REST reales usando `fetch()`, `async / await` y `try / catch` con respuestas tipadas en TypeScript, e inspeccionar peticiones en la pestaña **Network** de DevTools.
 
 ## Diccionario de la Industria
+- **DOM (*Document Object Model*)**, árbol de nodos, eventos del navegador y DevTools (*Elements* + *Network*)
+- **Single-thread y Event Loop** conceptual (por qué existe la asincronía para no congelar la interfaz)
 - Frontend (Cliente) vs. Backend (Servidor)
 - Protocolo HTTP (*Request/Response*, verbos `GET`/`POST`, headers, status codes `200`, `400`, `401`, `404`, `500`)
 - API y API REST

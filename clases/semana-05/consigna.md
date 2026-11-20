@@ -5,9 +5,10 @@ Dar el salto a **React** con Vite (`react-ts`) y Tailwind CSS (kit mínimo de cl
 
 ## Diccionario de la Industria
 - SPA (*Single Page Application*)
+- **DOM imperativo vs. React declarativo** (`UI = f(state)`)
 - Componentes y `TSX`
-- Estado (`useState<T>`) y `Props` tipadas (flujo unidireccional)
-- Renderizado declarativo (`UI = f(state)`) e inmutabilidad
+- Estado (`useState<T>`) y `Props` tipadas (flujo unidireccional) e inmutabilidad
+- **Responsive básico (*mobile-first*)** y contraste/accesibilidad mínima
 
 ## Recursos Permitidos
 - [es.react.dev/learn — Describir la UI](https://es.react.dev/learn/describing-the-ui)

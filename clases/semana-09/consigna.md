@@ -6,6 +6,7 @@ Implementar Registro y Login reales con **Supabase Auth**, diferenciar roles (`a
 ## Diccionario de la Industria
 - Autenticación (*quién sos* — Login, sesión, JWT) vs. Autorización (*qué podés hacer* — Roles y permisos)
 - `RLS` (*Row Level Security*) y `auth.uid()` en PostgreSQL
+- **`localStorage` / `sessionStorage` vs. `Cookies` (`HttpOnly`)** (dónde vive la sesión en el navegador)
 - Estado global de cliente (**Zustand** / Redux) vs. estado de servidor (TanStack Query) vs. estado local (`useState`)
 
 ## Recursos Permitidos

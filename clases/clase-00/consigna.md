@@ -1,7 +1,7 @@
 # Clase 0 — Entrada en Calor (HTML + CSS + Primer Pull Request)
 
 ## Objetivo
-Perder el miedo a VS Code, practicar el flujo de **Fork + Pull Request** y armar una primera página web simple con HTML y CSS mientras preparamos la Clase 1 de TypeScript.
+Perder el miedo a VS Code, practicar el flujo de **Fork + Pull Request**, incorporar nociones básicas de **HTML semántico** y **Box Model** (`margin`, `border`, `padding`), y armar tu primera página web simple mientras preparamos la Clase 1 de TypeScript.
 
 ## Consigna
 Creá dentro de `entregas/<tu-usuario-github>/clase-00/` dos archivos: `index.html` y `styles.css`.

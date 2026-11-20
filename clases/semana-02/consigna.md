@@ -5,7 +5,7 @@ Escribir funciones puras tipadas en TypeScript, modelar datos con `interface` y 
 
 ## Diccionario de la Industria
 - Estructuras de datos, `interface` y `type` (*union types*, ej. `'pendiente' | 'completado'`)
-- Mutabilidad vs. inmutabilidad
+- **Paso por valor vs. paso por referencia** y mutabilidad vs. inmutabilidad
 - `JSON` (*JavaScript Object Notation*) vs. objeto en memoria
 
 ## Recursos Permitidos
