@@ -5,7 +5,7 @@ Repositorio oficial del curso práctico de 12 semanas. Acá encontrás todas las
 ## Estructura del Repositorio
 
 - [`docs/`](./docs/) — Programa oficial, guía de instalación, flujo de entregas (Git/PRs) y diccionario de la industria.
-- [`clases/`](./clases/) — Consignas semanales, presentaciones (`.pptx` / `.pdf`) y recursos permitidos.
+- [`clases/`](./clases/) — Consignas semanales, presentaciones interactivas (`.html`) y recursos permitidos.
 - [`entregas/`](./entregas/) — **Única carpeta habilitada para tus Pull Requests** (dentro de `entregas/<tu-usuario-github>/`).
 
 ## Acceso Rápido
