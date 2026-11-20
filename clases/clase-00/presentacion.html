@@ -1,0 +1,641 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>WTDev — Clase 0: Entrada en Calor</title>
+    <style>
+      :root {
+        --bg: #ffffff;
+        --surface: #fafafa;
+        --hover: #f4f4f5;
+        --border: #e5e5e5;
+        --border-strong: #d4d4d4;
+        --fg: #0a0a0a;
+        --muted: #525252;
+        --subtle: #737373;
+        --cta-bg: #0a0a0a;
+        --cta-fg: #ffffff;
+        --ok-bg: #f0fdf4;
+        --ok-fg: #15803d;
+        --ok-border: #bbf7d0;
+      }
+
+      :root.dark {
+        --bg: #000000;
+        --surface: #0a0a0a;
+        --hover: #141414;
+        --border: #222222;
+        --border-strong: #333333;
+        --fg: #f5f5f5;
+        --muted: #a3a3a3;
+        --subtle: #737373;
+        --cta-bg: #ffffff;
+        --cta-fg: #000000;
+        --ok-bg: #052e16;
+        --ok-fg: #86efac;
+        --ok-border: #14532d;
+      }
+
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      body {
+        background: var(--bg);
+        color: var(--fg);
+        font-family: -apple-system, BlinkMacSystemFont, "Inter", "Segoe UI", Roboto, sans-serif;
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        -webkit-font-smoothing: antialiased;
+      }
+
+      /* Barra de progreso superior */
+      .progress-track {
+        height: 2px;
+        width: 100%;
+        background: var(--border);
+      }
+      .progress-fill {
+        height: 100%;
+        background: var(--fg);
+        transition: width 0.25s ease;
+      }
+
+      header {
+        height: 52px;
+        border-bottom: 1px solid var(--border);
+        padding: 0 24px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        font-size: 13px;
+      }
+
+      .brand {
+        font-weight: 600;
+        letter-spacing: -0.01em;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+
+      .pill {
+        font-size: 11px;
+        font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+        color: var(--muted);
+        border: 1px solid var(--border);
+        background: var(--surface);
+        padding: 2px 8px;
+        border-radius: 999px;
+      }
+
+      .controls {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
+
+      button {
+        cursor: pointer;
+        font-family: inherit;
+        font-size: 12px;
+        font-weight: 500;
+        border-radius: 6px;
+        border: 1px solid var(--border);
+        background: var(--bg);
+        color: var(--fg);
+        padding: 6px 12px;
+        transition: background 0.15s, border-color 0.15s, opacity 0.15s;
+      }
+
+      button:hover:not(:disabled) {
+        background: var(--hover);
+        border-color: var(--border-strong);
+      }
+
+      button:disabled {
+        opacity: 0.35;
+        cursor: not-allowed;
+      }
+
+      button.primary {
+        background: var(--cta-bg);
+        color: var(--cta-fg);
+        border-color: transparent;
+      }
+
+      button.primary:hover:not(:disabled) {
+        opacity: 0.88;
+      }
+
+      main {
+        flex: 1;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 32px 24px;
+      }
+
+      .slide {
+        display: none;
+        width: 100%;
+        max-width: 820px;
+        animation: fadeIn 0.2s ease;
+      }
+
+      .slide.active {
+        display: block;
+      }
+
+      @keyframes fadeIn {
+        from { opacity: 0; transform: translateY(6px); }
+        to { opacity: 1; transform: translateY(0); }
+      }
+
+      .eyebrow {
+        font-size: 12px;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+        color: var(--subtle);
+        margin-bottom: 12px;
+      }
+
+      h1 {
+        font-size: clamp(2rem, 4vw, 3rem);
+        line-height: 1.12;
+        letter-spacing: -0.03em;
+        font-weight: 700;
+        margin-bottom: 16px;
+      }
+
+      h2 {
+        font-size: clamp(1.5rem, 3vw, 2.15rem);
+        line-height: 1.18;
+        letter-spacing: -0.02em;
+        font-weight: 700;
+        margin-bottom: 14px;
+      }
+
+      .lead {
+        font-size: 17px;
+        line-height: 1.6;
+        color: var(--muted);
+        max-width: 65ch;
+      }
+
+      .grid-2 {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+        gap: 14px;
+        margin-top: 24px;
+      }
+
+      .grid-3 {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+        gap: 14px;
+        margin-top: 24px;
+      }
+
+      .card {
+        border: 1px solid var(--border);
+        background: var(--surface);
+        border-radius: 10px;
+        padding: 18px;
+      }
+
+      .card h3 {
+        font-size: 14px;
+        font-weight: 600;
+        margin-bottom: 6px;
+      }
+
+      .card p,
+      .card li {
+        font-size: 13.5px;
+        line-height: 1.55;
+        color: var(--muted);
+      }
+
+      ul.clean {
+        list-style: none;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        margin-top: 20px;
+      }
+
+      ul.clean li {
+        border: 1px solid var(--border);
+        background: var(--surface);
+        border-radius: 8px;
+        padding: 12px 16px;
+        font-size: 14.5px;
+        line-height: 1.5;
+        color: var(--muted);
+      }
+
+      ul.clean li strong {
+        color: var(--fg);
+      }
+
+      pre {
+        margin-top: 18px;
+        padding: 16px;
+        border-radius: 8px;
+        border: 1px solid var(--border);
+        background: var(--surface);
+        overflow-x: auto;
+        font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+        font-size: 13px;
+        line-height: 1.55;
+        color: var(--fg);
+      }
+
+      code {
+        font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+        font-size: 0.9em;
+        background: var(--surface);
+        border: 1px solid var(--border);
+        padding: 1px 5px;
+        border-radius: 4px;
+        color: var(--fg);
+      }
+
+      pre code {
+        border: none;
+        padding: 0;
+        background: transparent;
+      }
+
+      /* Diagrama Box Model */
+      .box-margin {
+        margin-top: 24px;
+        border: 1px dashed var(--border-strong);
+        background: var(--surface);
+        padding: 20px;
+        border-radius: 10px;
+      }
+      .box-border {
+        border: 2px solid var(--fg);
+        background: var(--bg);
+        padding: 20px;
+        border-radius: 8px;
+        margin-top: 8px;
+      }
+      .box-padding {
+        border: 1px dashed var(--border-strong);
+        background: var(--surface);
+        padding: 18px;
+        border-radius: 6px;
+        margin-top: 8px;
+      }
+      .box-content {
+        background: var(--cta-bg);
+        color: var(--cta-fg);
+        padding: 14px;
+        border-radius: 4px;
+        text-align: center;
+        font-weight: 600;
+        font-size: 13px;
+        margin-top: 8px;
+      }
+      .box-label {
+        font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+        font-size: 11px;
+        color: var(--subtle);
+        text-transform: uppercase;
+      }
+
+      /* Flujo de 5 pasos */
+      .steps {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        margin-top: 22px;
+      }
+      .step {
+        flex: 1 1 130px;
+        border: 1px solid var(--border);
+        background: var(--surface);
+        border-radius: 8px;
+        padding: 14px;
+      }
+      .step-num {
+        font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+        font-size: 11px;
+        color: var(--subtle);
+      }
+      .step-title {
+        font-size: 14px;
+        font-weight: 600;
+        margin: 4px 0;
+      }
+      .step-desc {
+        font-size: 12px;
+        color: var(--muted);
+        line-height: 1.45;
+      }
+
+      .badge-ok {
+        display: inline-block;
+        margin-top: 18px;
+        font-size: 12px;
+        font-weight: 500;
+        padding: 5px 12px;
+        border-radius: 999px;
+        background: var(--ok-bg);
+        color: var(--ok-fg);
+        border: 1px solid var(--ok-border);
+      }
+
+      footer {
+        height: 54px;
+        border-top: 1px solid var(--border);
+        padding: 0 24px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        font-size: 12px;
+        color: var(--subtle);
+      }
+    </style>
+  </head>
+  <body>
+    <div class="progress-track"><div id="progress" class="progress-fill"></div></div>
+
+    <header>
+      <div class="brand">
+        <span>WTDev</span>
+        <span class="pill">Clase 0 · Entrada en Calor</span>
+      </div>
+      <div class="controls">
+        <span id="counter" class="pill">1 / 10</span>
+        <button id="themeBtn" type="button" title="Alternar Claro / OLED">OLED</button>
+      </div>
+    </header>
+
+    <main>
+      <!-- SLIDE 1 -->
+      <section class="slide active">
+        <p class="eyebrow">WTDev · Bootcamp de Programación Web desde Cero</p>
+        <h1>De cero a tu primer sistema web publicado en 12 semanas.</h1>
+        <p class="lead">
+          Clase 0: dejamos listo tu entorno, entendemos cómo funciona una página web y abrimos tu
+          primer <strong>Pull Request</strong> antes de arrancar con TypeScript.
+        </p>
+        <span class="badge-ok">Usá ← y → del teclado para navegar</span>
+      </section>
+
+      <!-- SLIDE 2 -->
+      <section class="slide">
+        <p class="eyebrow">El Mapa · 12 Semanas</p>
+        <h2>¿Qué vas a construir?</h2>
+        <p class="lead">
+          No vamos a hacer ejercicios sueltos sin destino: todo converge en un
+          <strong>producto web real y vendible</strong> publicado en tu propia cuenta.
+        </p>
+        <div class="grid-3">
+          <div class="card">
+            <h3>Fase 1 · Semanas 1–4</h3>
+            <p>Lógica pura en TypeScript, JSON, DOM, HTTP, APIs REST y Examen 1 + definición de MVP.</p>
+          </div>
+          <div class="card">
+            <h3>Fase 2 · Semanas 5–8</h3>
+            <p>React + Vite + Tailwind, Arquitectura de BD, SQL puro en Supabase, TanStack Query y Examen 2.</p>
+          </div>
+          <div class="card">
+            <h3>Fase 3 · Semanas 9–12</h3>
+            <p>Auth, Roles, RLS, Zustand, Backend propio en Express + JWT, Deploy, DNS y Defensa Final.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- SLIDE 3 -->
+      <section class="slide">
+        <p class="eyebrow">Reglas de Juego</p>
+        <h2>Cómo se cursa y se aprueba</h2>
+        <ul class="clean">
+          <li><strong>Ritmo semanal:</strong> 6 a 8 hs de práctica tuya (lun–jue, entrega antes del jueves 23:59) + 2 a 4 hs en vivo el finde.</li>
+          <li><strong>3 Exámenes eliminatorios (nota mínima 7):</strong> 40 % <strong>Pseudocódigo tipado en vivo</strong> (sin IA, estricto en tipos y lógica) + 30 % Oral + 30 % Entregable.</li>
+          <li><strong>Honestidad con la IA:</strong> podés usar IA en la semana para destrabarte, declarándolo en el PR. Si en clase no sabés explicar una función que subiste, vale 0.</li>
+          <li><strong>Dudas entre semana:</strong> primero al grupo; si nadie la saca, arrobás al profe enviando qué probaste, el código y el error exacto.</li>
+        </ul>
+      </section>
+
+      <!-- SLIDE 4 -->
+      <section class="slide">
+        <p class="eyebrow">Herramientas</p>
+        <h2>Tu entorno de trabajo</h2>
+        <div class="grid-2">
+          <div class="card">
+            <h3>Visual Studio Code</h3>
+            <p>Tu editor de código. Sin Copilot ni autocompletado de IA en las primeras semanas.</p>
+          </div>
+          <div class="card">
+            <h3>Node.js (LTS)</h3>
+            <p>Motor para ejecutar TypeScript directo en tu PC (<code>node archivo.ts</code>) sin configuraciones extra.</p>
+          </div>
+          <div class="card">
+            <h3>Git + GitHub</h3>
+            <p>Control de versiones profesional y el lugar donde vas a entregar cada tarea vía Pull Request.</p>
+          </div>
+          <div class="card">
+            <h3>WTDev Campus</h3>
+            <p>Tu panel de clases, consignas, entregas, notas y proyectos de la cohorte.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- SLIDE 5 -->
+      <section class="slide">
+        <p class="eyebrow">Fundamentos Web</p>
+        <h2>Cómo funciona una página web</h2>
+        <p class="lead">
+          El navegador (Chrome/Brave) lee tres capas bien separadas para dibujar y dar vida a una pantalla:
+        </p>
+        <div class="grid-3">
+          <div class="card">
+            <h3>1. HTML</h3>
+            <p><strong>Estructura y significado.</strong> Qué elementos existen: títulos, párrafos, listas, imágenes y botones.</p>
+          </div>
+          <div class="card">
+            <h3>2. CSS</h3>
+            <p><strong>Presentación visual.</strong> Colores, tipografía, espaciados, bordes y adaptación a celular/PC.</p>
+          </div>
+          <div class="card">
+            <h3>3. JavaScript / TS</h3>
+            <p><strong>Comportamiento y datos.</strong> Qué pasa al hacer clic, validaciones y comunicación con el servidor.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- SLIDE 6 -->
+      <section class="slide">
+        <p class="eyebrow">Buenas Prácticas desde el Día 0</p>
+        <h2>HTML Semántico</h2>
+        <p class="lead">
+          Evitá usar <code>&lt;div&gt;</code> para todo: cada etiqueta comunica qué rol cumple (ayuda a la accesibilidad y al orden del código).
+        </p>
+        <pre><code>&lt;main class="tarjeta"&gt;
+  &lt;header&gt;
+    &lt;h1&gt;Barbería Don Pepe&lt;/h1&gt;
+    &lt;p&gt;Turnos por orden de llegada y reservas online.&lt;/p&gt;
+  &lt;/header&gt;
+
+  &lt;ul&gt;
+    &lt;li&gt;Corte clásico&lt;/li&gt;
+    &lt;li&gt;Perfilado de barba&lt;/li&gt;
+    &lt;li&gt;Corte + barba&lt;/li&gt;
+  &lt;/ul&gt;
+
+  &lt;a href="#contacto" class="boton"&gt;Reservar turno&lt;/a&gt;
+&lt;/main&gt;</code></pre>
+      </section>
+
+      <!-- SLIDE 7 -->
+      <section class="slide">
+        <p class="eyebrow">CSS Esencial</p>
+        <h2>El Box Model (Modelo de Caja)</h2>
+        <p class="lead">
+          Todo elemento en pantalla es una caja compuesta por 4 capas. Dominar esto evita el 90 % de las peleas con CSS:
+        </p>
+        <div class="box-margin">
+          <span class="box-label">Margin — espacio exterior que separa de otras cajas</span>
+          <div class="box-border">
+            <span class="box-label">Border — el contorno visible de la caja</span>
+            <div class="box-padding">
+              <span class="box-label">Padding — aire interior entre el borde y el texto</span>
+              <div class="box-content">Content — tu texto, imagen o botón</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- SLIDE 8 -->
+      <section class="slide">
+        <p class="eyebrow">Flujo Profesional</p>
+        <h2>Entregas en 5 pasos (Fork + Pull Request)</h2>
+        <p class="lead">
+          Nunca subís código directo a <code>main</code>. Trabajás solo dentro de <code>entregas/&lt;tu-usuario&gt;/</code> y el <strong>Guardián automático</strong> valida tu PR.
+        </p>
+        <div class="steps">
+          <div class="step">
+            <div class="step-num">01</div>
+            <div class="step-title">Sync + Pull</div>
+            <div class="step-desc">Actualizás tu Fork y traés cambios a tu PC.</div>
+          </div>
+          <div class="step">
+            <div class="step-num">02</div>
+            <div class="step-title">Branch</div>
+            <div class="step-desc">Creás rama nueva: <code>entrega/clase-00</code>.</div>
+          </div>
+          <div class="step">
+            <div class="step-num">03</div>
+            <div class="step-title">Tu Carpeta</div>
+            <div class="step-desc">Editás solo en <code>entregas/&lt;usuario&gt;/</code>.</div>
+          </div>
+          <div class="step">
+            <div class="step-num">04</div>
+            <div class="step-title">Commit + Push</div>
+            <div class="step-desc">Guardás y subís la rama a tu Fork.</div>
+          </div>
+          <div class="step">
+            <div class="step-num">05</div>
+            <div class="step-title">Pull Request</div>
+            <div class="step-desc">Completás plantilla + declaración de IA y check verde.</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- SLIDE 9 -->
+      <section class="slide">
+        <p class="eyebrow">Práctica · Entregable 0</p>
+        <h2>Consigna de la Clase 0</h2>
+        <p class="lead">
+          Creá <code>entregas/&lt;tu-usuario-github&gt;/clase-00/index.html</code> y <code>styles.css</code> con una tarjeta de presentación (tuya o de un comercio local):
+        </p>
+        <ul class="clean">
+          <li><strong>1.</strong> Un título principal (<code>&lt;h1&gt;</code>) y una descripción corta (<code>&lt;p&gt;</code>).</li>
+          <li><strong>2.</strong> Una imagen (<code>&lt;img&gt;</code>) con atributo <code>alt</code> descriptivo.</li>
+          <li><strong>3.</strong> Una lista de al menos 3 servicios, productos o gustos (<code>&lt;ul&gt;</code> y <code>&lt;li&gt;</code>).</li>
+          <li><strong>4.</strong> Un enlace o botón (<code>&lt;a&gt;</code> o <code>&lt;button&gt;</code>).</li>
+          <li><strong>5.</strong> En <code>styles.css</code>: colores sobrios, bordes redondeados, buen padding y tarjeta centrada en pantalla.</li>
+        </ul>
+      </section>
+
+      <!-- SLIDE 10 -->
+      <section class="slide">
+        <p class="eyebrow">Próximos Pasos</p>
+        <h2>¿Qué hacés hoy mismo?</h2>
+        <ul class="clean">
+          <li><strong>Paso 1:</strong> Creá tu cuenta en <strong>WTDev Campus</strong> con tu nombre y usuario exacto de GitHub.</li>
+          <li><strong>Paso 2:</strong> Instalá VS Code, Node.js LTS, Git y hacé el <strong>Fork</strong> del repositorio del curso.</li>
+          <li><strong>Paso 3:</strong> Armá tu tarjeta de Clase 0 y abrí tu primer <strong>Pull Request</strong> antes de la Clase 1.</li>
+          <li><strong>Paso 4:</strong> En la Clase 1 lo revisamos y mergeamos en vivo antes de arrancar con TypeScript.</li>
+        </ul>
+        <span class="badge-ok">¡Arrancamos! Cualquier duda, primero al grupo.</span>
+      </section>
+    </main>
+
+    <footer>
+      <span>Atajos: ← / → cambiar slide · T cambiar tema</span>
+      <div class="controls">
+        <button id="prevBtn" type="button">← Anterior</button>
+        <button id="nextBtn" type="button" class="primary">Siguiente →</button>
+      </div>
+    </footer>
+
+    <script>
+      const slides = Array.from(document.querySelectorAll('.slide'));
+      const progress = document.getElementById('progress');
+      const counter = document.getElementById('counter');
+      const prevBtn = document.getElementById('prevBtn');
+      const nextBtn = document.getElementById('nextBtn');
+      const themeBtn = document.getElementById('themeBtn');
+
+      let index = 0;
+
+      function render() {
+        slides.forEach((s, i) => s.classList.toggle('active', i === index));
+        const pct = ((index + 1) / slides.length) * 100;
+        progress.style.width = pct + '%';
+        counter.textContent = `${index + 1} / ${slides.length}`;
+        prevBtn.disabled = index === 0;
+        nextBtn.disabled = index === slides.length - 1;
+      }
+
+      function toggleTheme() {
+        const isDark = document.documentElement.classList.toggle('dark');
+        themeBtn.textContent = isDark ? 'Claro' : 'OLED';
+      }
+
+      prevBtn.addEventListener('click', () => {
+        if (index > 0) { index--; render(); }
+      });
+
+      nextBtn.addEventListener('click', () => {
+        if (index < slides.length - 1) { index++; render(); }
+      });
+
+      themeBtn.addEventListener('click', toggleTheme);
+
+      window.addEventListener('keydown', (e) => {
+        if (e.key === 'ArrowRight' || e.key === ' ') {
+          if (index < slides.length - 1) { e.preventDefault(); index++; render(); }
+        } else if (e.key === 'ArrowLeft') {
+          if (index > 0) { e.preventDefault(); index--; render(); }
+        } else if (e.key.toLowerCase() === 't') {
+          toggleTheme();
+        }
+      });
+
+      render();
+    </script>
+  </body>
+</html>
