@@ -26,6 +26,26 @@ Copiar un ejemplo solo sirve si después **le cambiás al menos 2 cosas** para v
 
 ---
 
+## Comandos básicos de terminal (CLI)
+
+Antes de correr comandos de Git o de Node.js en Semana 1, te conviene dominar estos comandos mínimos en la terminal de VS Code (`Ctrl + ñ` o `` Ctrl + ` ``):
+
+| Comando / Atajo | Qué hace |
+| :--- | :--- |
+| `pwd` | Muestra **dónde estás parado** (ruta completa de la carpeta actual). |
+| `ls` | Lista los archivos y carpetas que hay en tu ubicación actual. |
+| `cd <carpeta>` | Entra a esa carpeta (ej. `cd entregas`). |
+| `cd ..` | Sube un nivel hacia la carpeta padre. |
+| `mkdir <nombre>` | Crea una carpeta nueva. |
+| `clear` | Limpia la pantalla de la terminal. |
+| `Tab` | Autocompleta nombres de carpetas y archivos (evita errores de tipeo). |
+| `↑` / `↓` | Recorre el historial de comandos que ya ejecutaste. |
+| `Ctrl + C` | Cancela un proceso o comando que quedó corriendo. |
+
+> **Error #1 más común:** correr `git status` o `node archivo.ts` estando parado en la carpeta equivocada. Antes de ejecutar un comando, verificá siempre con `pwd` y `ls` que estás dentro de `curso-repo`.
+
+---
+
 ## Recursos Permitidos
 - [MDN Web Docs — Referencia de CSS](https://developer.mozilla.org/es/docs/Web/CSS/Reference)
 - [MDN Web Docs — Referencia de HTML](https://developer.mozilla.org/es/docs/Web/HTML/Element)
@@ -81,16 +101,18 @@ Para cada uno de los 6 temas, incluí:
 ---
 
 ## Cómo entregarla
-1. Actualizá tu fork (`Sync fork` en GitHub + `git pull origin main` en tu PC).
-2. Creá la rama `entrega/clase-00-documentacion`:
+1. Abrí la terminal en VS Code dentro de `curso-repo` (verificá con `pwd` y `ls`).
+2. Actualizá tu fork (`Sync fork` en GitHub + `git checkout main` y `git pull origin main` en tu PC).
+3. Creá la rama `entrega/clase-00-documentacion` y tu carpeta desde la terminal:
    ```bash
    git checkout -b entrega/clase-00-documentacion
+   mkdir entregas/<tu-usuario-github>/clase-00-documentacion
    ```
-3. Trabajá **únicamente** dentro de `entregas/<tu-usuario-github>/clase-00-documentacion/`.
-4. Guardá y subí tus cambios:
+4. Trabajá **únicamente** dentro de `entregas/<tu-usuario-github>/clase-00-documentacion/`.
+5. Guardá y subí tus cambios:
    ```bash
    git add .
    git commit -m "docs: apuntes de lectura de documentacion"
    git push origin entrega/clase-00-documentacion
    ```
-5. Abrí el Pull Request siguiendo [`docs/flujo-entregas.md`](../../docs/flujo-entregas.md) y verificá que el check automático **`evaluar-pr`** quede en verde.
+6. Abrí el Pull Request siguiendo [`docs/flujo-entregas.md`](../../docs/flujo-entregas.md) y verificá que el check automático **`evaluar-pr`** quede en verde.

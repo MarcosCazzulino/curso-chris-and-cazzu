@@ -486,7 +486,7 @@
         <span class="pill">Clase 0B · Documentación</span>
       </div>
       <div class="controls">
-        <span class="pill" id="slideCounter">1 / 7</span>
+        <span class="pill" id="slideCounter">1 / 8</span>
         <button type="button" id="themeBtn" title="Cambiar tema">Tema</button>
       </div>
     </header>
@@ -505,8 +505,8 @@
             <h3>Lo que nos vamos a llevar hoy</h3>
             <ul class="clean">
               <li>Cómo navegar <strong>MDN Web Docs</strong> sin marearte.</li>
-              <li>Cómo googlear como un desarrollador real.</li>
-              <li>El método <strong>"romper para entender"</strong>.</li>
+              <li>Cómo googlear y el método <strong>"romper para entender"</strong>.</li>
+              <li>Comandos básicos de <strong>terminal</strong> para moverte sin miedo.</li>
             </ul>
           </div>
           <div class="card">
@@ -661,6 +661,37 @@
 
       <!-- SLIDE 6 -->
       <section class="slide">
+        <span class="eyebrow">Terminal básica</span>
+        <h2>Supervivencia en la Terminal</h2>
+        <p class="lead">
+          La terminal no muerde: es lo mismo que el explorador de carpetas de Windows/Mac, pero con
+          texto. Estos <strong>6 comandos</strong> te resuelven el 90% del día a día:
+        </p>
+        <div class="grid-2">
+          <div class="card">
+            <h3>Navegar y crear carpetas</h3>
+            <ul class="clean">
+              <li><code>pwd</code> — muestra <strong>en qué carpeta estás parado</strong>.</li>
+              <li><code>ls</code> — lista los archivos y carpetas de ese lugar.</li>
+              <li><code>cd carpeta</code> — entra a una carpeta (<code>cd ..</code> sube un nivel).</li>
+              <li><code>mkdir nombre</code> — crea una carpeta nueva.</li>
+              <li><code>clear</code> — limpia la pantalla cuando hay mucho texto.</li>
+            </ul>
+          </div>
+          <div class="card warn">
+            <h3>Atajos y error #1</h3>
+            <ul class="clean">
+              <li><strong><code>Tab</code>:</strong> autocompleta nombres de carpetas y archivos (evitá tipear todo a mano).</li>
+              <li><strong>Flechas <code>↑</code> / <code>↓</code>:</strong> recuperan comandos que ya escribiste.</li>
+              <li><strong><code>Ctrl + C</code>:</strong> frena un comando que se quedó colgado.</li>
+              <li><strong>Error #1:</strong> correr <code>git</code> o <code>node</code> parado en la carpeta equivocada. Chequeá siempre con <code>pwd</code> y <code>ls</code>.</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- SLIDE 7 -->
+      <section class="slide">
         <span class="eyebrow">Consigna práctica</span>
         <h2>Armá tu propia documentación</h2>
         <p class="lead">
@@ -687,7 +718,7 @@
         </div>
       </section>
 
-      <!-- SLIDE 7 -->
+      <!-- SLIDE 8 -->
       <section class="slide">
         <span class="eyebrow">Entrega en GitHub</span>
         <h2>Subilo como Pull Request</h2>
@@ -695,12 +726,14 @@
           Recordá trabajar <strong>solo dentro de tu carpeta</strong> para que el check automático
           <code>evaluar-pr</code> quede en verde.
         </p>
-        <pre># 1. Actualizá tu fork y creá la rama
+        <pre># 1. Chequeá que estás en curso-repo, actualizá y creá la rama
+pwd
 git checkout main
 git pull origin main
 git checkout -b entrega/clase-00-documentacion
 
-# 2. Creá entregas/&lt;tu-usuario&gt;/clase-00-documentacion/apuntes.md
+# 2. Creá tu carpeta desde la terminal y armá apuntes.md adentro
+mkdir entregas/&lt;tu-usuario&gt;/clase-00-documentacion
 
 # 3. Guardá y subí tus cambios
 git add .
